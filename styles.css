@@ -377,10 +377,12 @@ body {
 }
 
 .date-input {
-  display: block;
+  display: flex;
+  align-items: center;
   width: 100%;
   max-width: 100%;
   min-width: 0;
+  min-height: 44px;
   overflow: hidden;
   border-radius: 12px;
   border: 2px solid var(--pink-deep);
@@ -396,9 +398,13 @@ body {
   width: 100%;
   max-width: 100%;
   min-width: 0;
+  height: 40px;
+  min-height: 40px;
   margin: 0;
+  padding: 0 14px;
   border: 0;
   border-radius: 0;
+  line-height: 40px;
   background: transparent;
   box-shadow: none;
   -webkit-appearance: none;
@@ -417,12 +423,16 @@ body {
 .date-input input[type="date"]::-webkit-datetime-edit-year-field {
   min-width: 0;
   padding: 0;
+  line-height: 40px;
 }
 
 .date-input input[type="date"]::-webkit-date-and-time-value {
+  display: block;
   text-align: left;
   min-width: 0;
   width: 100%;
+  min-height: 40px;
+  line-height: 40px;
 }
 
 .date-input input[type="date"]::-webkit-calendar-picker-indicator {
