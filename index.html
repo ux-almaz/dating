@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пойдёшь на второе свидание?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <span
+        class="floating-deco float-anim"
+        style="top: 8%; left: 5%; font-size: 1.4rem; animation-delay: 0s"
+        aria-hidden="true"
+        >🌸</span
+      >
+      <span
+        class="floating-deco float-anim-alt"
+        style="top: 15%; left: 88%; font-size: 1rem; animation-delay: 0.5s"
+        aria-hidden="true"
+        >🌸</span
+      >
+      <span
+        class="floating-deco float-anim-slow"
+        style="top: 70%; left: 3%; font-size: 1.2rem; animation-delay: 1s"
+        aria-hidden="true"
+        >🌸</span
+      >
+      <span
+        class="floating-deco float-anim"
+        style="top: 80%; left: 90%; font-size: 0.9rem; animation-delay: 0.3s"
+        aria-hidden="true"
+        >🌸</span
+      >
+      <span
+        class="floating-deco float-anim-alt"
+        style="top: 40%; left: 92%; font-size: 1.1rem; animation-delay: 0.8s"
+        aria-hidden="true"
+        >🌸</span
+      >
+      <span
+        class="floating-deco float-anim"
+        style="top: 55%; left: 2%; font-size: 1rem; animation-delay: 1.2s"
+        aria-hidden="true"
+        >🌸</span
+      >
+      <span
+        class="floating-deco float-anim-slow"
+        style="top: 25%; left: 6%; font-size: 0.8rem; animation-delay: 0.4s"
+        aria-hidden="true"
+        >🌸</span
+      >
+      <span
+        class="floating-deco float-anim-alt"
+        style="top: 90%; left: 45%; font-size: 1rem; animation-delay: 0.7s"
+        aria-hidden="true"
+        >🌸</span
+      >
+      <span
+        class="floating-deco float-anim"
+        style="top: 5%; left: 50%; font-size: 0.9rem; animation-delay: 1.5s"
+        aria-hidden="true"
+        >🌸</span
+      >
+
+      <main class="app">
+      <!-- Экран 1: предложение -->
+      <section class="screen screen--active" data-screen="ask">
+        <article class="card fade-in-up">
+          <img
+            class="card__photo"
+            src="images/retriever.png"
+            alt="Золотистый ретривер"
+            width="120"
+            height="120"
+          />
+          <span class="card__title-flower card__title-flower--above" aria-hidden="true"
+            >🌸</span
+          >
+          <h1 class="card__title">
+            <span class="card__title-flower card__title-flower--inline" aria-hidden="true"
+              >🌸 </span
+            >Пойдёшь на второе свидание?<span
+              class="card__title-flower card__title-flower--inline"
+              aria-hidden="true"
+            >
+              🌸</span
+            >
+          </h1>
+          <p class="card__subtitle">Первое было классным… давай повторим?</p>
+          <div class="actions actions--proposal">
+            <button type="button" class="btn btn--yes" data-action="yes">
+              ДА ♥
+            </button>
+            <div class="no-btn-spacer" id="no-btn-spacer" aria-hidden="true"></div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Экран 2: радость -->
+      <section class="screen" data-screen="yay">
+        <article class="card fade-in-up">
+          <div class="card__emoji">😭💕</div>
+          <h1 class="card__title">ТЫ ПРАВДА СКАЗАЛА ДА??</h1>
+          <p class="card__subtitle">
+            Я уже готовился к «нет» и убегающей кнопке…
+          </p>
+          <button type="button" class="btn btn--yes btn--wide" data-action="next-activities">
+            ладно, выбираем! →
+          </button>
+        </article>
+      </section>
+
+      <!-- Экран 3: активности -->
+      <section class="screen" data-screen="activities">
+        <article class="card card--wide fade-in-up">
+          <h1 class="card__title card__title--sm">Чем займёмся? ✨</h1>
+          <p class="card__subtitle">Можно выбрать несколько — я подстроюсь</p>
+
+          <div class="activity-grid" role="group" aria-label="Выбор активностей">
+            <label class="activity">
+              <input type="checkbox" name="activity" value="table-tennis" />
+              <span class="activity__inner">
+                <span class="activity__icon">🏓</span>
+                <span class="activity__name">Настольный теннис</span>
+              </span>
+            </label>
+            <label class="activity">
+              <input type="checkbox" name="activity" value="tennis" />
+              <span class="activity__inner">
+                <span class="activity__icon">🎾</span>
+                <span class="activity__name">Теннис</span>
+              </span>
+            </label>
+            <label class="activity">
+              <input type="checkbox" name="activity" value="bowling" />
+              <span class="activity__inner">
+                <span class="activity__icon">🎳</span>
+                <span class="activity__name">Боулинг</span>
+              </span>
+            </label>
+            <label class="activity">
+              <input type="checkbox" name="activity" value="dinner" />
+              <span class="activity__inner">
+                <span class="activity__icon">🍽️</span>
+                <span class="activity__name">Ужин</span>
+              </span>
+            </label>
+            <label class="activity">
+              <input type="checkbox" name="activity" value="walk" />
+              <span class="activity__inner">
+                <span class="activity__icon">🌳</span>
+                <span class="activity__name">Прогулка</span>
+              </span>
+            </label>
+            <label class="activity">
+              <input type="checkbox" name="activity" value="tea" />
+              <span class="activity__inner">
+                <span class="activity__icon">🍵</span>
+                <span class="activity__name">Чай</span>
+              </span>
+            </label>
+            <label class="activity">
+              <input type="checkbox" name="activity" value="museum" />
+              <span class="activity__inner">
+                <span class="activity__icon">🖼️</span>
+                <span class="activity__name">Музей</span>
+              </span>
+            </label>
+            <label class="activity">
+              <input type="checkbox" name="activity" value="karting" />
+              <span class="activity__inner">
+                <span class="activity__icon">🏎️</span>
+                <span class="activity__name">Картинг</span>
+              </span>
+            </label>
+            <label class="activity">
+              <input type="checkbox" name="activity" value="amusement-park" />
+              <span class="activity__inner">
+                <span class="activity__icon">🎢</span>
+                <span class="activity__name">Парк аттракционов</span>
+              </span>
+            </label>
+            <label class="activity">
+              <input type="checkbox" name="activity" value="picnic" />
+              <span class="activity__inner">
+                <span class="activity__icon">🧺</span>
+                <span class="activity__name">Пикник</span>
+              </span>
+            </label>
+            <label class="activity">
+              <input type="checkbox" name="activity" value="surprise" />
+              <span class="activity__inner">
+                <span class="activity__icon">🎁</span>
+                <span class="activity__name">Сюрприз от тебя</span>
+              </span>
+            </label>
+          </div>
+
+          <p class="hint hint--error" id="activity-error" hidden>
+            Выбери хотя бы одну активность 🙏
+          </p>
+
+          <button
+            type="button"
+            class="btn btn--yes btn--wide"
+            data-action="next-datetime"
+          >
+            дальше ♥
+          </button>
+        </article>
+      </section>
+
+      <!-- Экран 4: дата и время -->
+      <section class="screen" data-screen="datetime">
+        <article class="card card--wide fade-in-up">
+          <h1 class="card__title card__title--sm">Когда тебе удобно?</h1>
+          <div class="form-field">
+            <label for="date-pick">День 📅</label>
+            <input type="date" id="date-pick" />
+          </div>
+          <div class="form-field">
+            <label for="time-pick">Время ⏰</label>
+            <select id="time-pick">
+              <option value="">Выбери время…</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="note">Комментарий (необязательно) 💬</label>
+            <textarea
+              id="note"
+              rows="2"
+              placeholder="Например: давай без боулинга, зато с мороженым"
+            ></textarea>
+          </div>
+          <button
+            type="button"
+            class="btn btn--yes btn--wide"
+            data-action="confirm"
+          >
+            назначить свидание! ♥
+          </button>
+        </article>
+      </section>
+
+      <!-- Экран 5: финал -->
+      <section class="screen" data-screen="done">
+        <article class="card fade-in-up">
+          <div class="card__emoji">❤️</div>
+          <h1 class="card__title">Увидимся!</h1>
+          <p class="card__subtitle" id="summary-text"></p>
+          <p class="card__footnote">Скоро напишу тебе с деталями ♥</p>
+          <button type="button" class="btn btn--ghost btn--wide" data-action="restart">
+            начать сначала
+          </button>
+        </article>
+      </section>
+      </main>
+
+      <footer class="footer">сделано с любовью 🌸 для Сезим</footer>
+
+      <button
+        type="button"
+        class="btn btn--no"
+        id="no-btn"
+        hidden
+        aria-hidden="true"
+      >
+        нет 🐾
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
