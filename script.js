@@ -1,3 +1,5 @@
+const WEB3FORMS_ACCESS_KEY = "9ee24974-a048-4ed8-8a1c-6116a6feb932";
+
 const ACTIVITY_LABELS = {
   "table-tennis": "настольный теннис",
   tennis: "теннис",
@@ -22,6 +24,7 @@ const screens = document.querySelectorAll(".screen");
 const noBtn = document.getElementById("no-btn");
 const noBtnSpacer = document.getElementById("no-btn-spacer");
 const activityError = document.getElementById("activity-error");
+const submitError = document.getElementById("submit-error");
 const summaryText = document.getElementById("summary-text");
 const datePick = document.getElementById("date-pick");
 
@@ -38,6 +41,8 @@ const noBtnState = {
 };
 
 function showScreen(name) {
+  window.scrollTo(0, 0);
+
   screens.forEach((el) => {
     const active = el.dataset.screen === name;
     el.classList.toggle("screen--active", active);
@@ -73,6 +78,65 @@ function formatDateRu(isoDate) {
     day: "numeric",
     month: "long",
   });
+}
+
+function buildProposalSummary() {
+  const activities = getSelectedActivities();
+  const dateStr = formatDateRu(datePick.value);
+  const time = document.getElementById("time-pick").value;
+  const note = document.getElementById("note").value.trim();
+
+  const parts = [`Второе свидание: ${activities.join(", ")}.`];
+  if (dateStr && time) {
+    parts.push(`${dateStr}, ${time}.`);
+  } else if (dateStr) {
+    parts.push(`${dateStr}.`);
+  } else if (time) {
+    parts.push(`Время: ${time}.`);
+  }
+  if (note) parts.push(`«${note}»`);
+
+  return parts.join(" ");
+}
+
+async function submitProposal(button) {
+  if (button?.disabled) return;
+
+  const summary = buildProposalSummary();
+  if (submitError) submitError.hidden = true;
+
+  const originalLabel = button.textContent;
+  button.disabled = true;
+  button.textContent = "отправляем…";
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: "Второе свидание — ответ с сайта",
+        from_name: "Сезим (сайт свидания)",
+        message: summary,
+      }),
+    });
+
+    const data = await response.json();
+    if (!response.ok || !data.success) {
+      throw new Error(data.message || "Submit failed");
+    }
+
+    summaryText.textContent = summary;
+    showScreen("done");
+  } catch {
+    if (submitError) submitError.hidden = false;
+  } finally {
+    button.disabled = false;
+    button.textContent = originalLabel;
+  }
 }
 
 function trackPointer(clientX, clientY) {
@@ -184,26 +248,9 @@ document.addEventListener("click", (e) => {
       showScreen("datetime");
       break;
     }
-    case "confirm": {
-      const activities = getSelectedActivities();
-      const dateStr = formatDateRu(datePick.value);
-      const time = document.getElementById("time-pick").value;
-      const note = document.getElementById("note").value.trim();
-
-      let parts = [`Второе свидание: ${activities.join(", ")}.`];
-      if (dateStr && time) {
-        parts.push(`${dateStr}, ${time}.`);
-      } else if (dateStr) {
-        parts.push(`${dateStr}.`);
-      } else if (time) {
-        parts.push(`Время: ${time}.`);
-      }
-      if (note) parts.push(`«${note}»`);
-
-      summaryText.textContent = parts.join(" ");
-      showScreen("done");
+    case "confirm":
+      submitProposal(action);
       break;
-    }
     case "restart":
       document
         .querySelectorAll('input[name="activity"]')
@@ -212,6 +259,7 @@ document.addEventListener("click", (e) => {
       document.getElementById("time-pick").value = "";
       document.getElementById("note").value = "";
       activityError.hidden = true;
+      if (submitError) submitError.hidden = true;
       showScreen("ask");
       break;
     default:

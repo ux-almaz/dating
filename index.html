@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Пойдёшь на второе свидание?</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="favicon.png" type="image/png" sizes="32x32" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -258,10 +262,14 @@
               placeholder="Например: давай без боулинга, зато с мороженым"
             ></textarea>
           </div>
+          <p class="hint hint--error" id="submit-error" hidden>
+            Не удалось отправить — попробуй ещё раз 🙏
+          </p>
           <button
             type="button"
             class="btn btn--yes btn--wide"
             data-action="confirm"
+            id="confirm-btn"
           >
             назначить свидание! ♥
           </button>
